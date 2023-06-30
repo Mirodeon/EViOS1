@@ -40,17 +40,18 @@ class ViewController: UIViewController {
         configureBtn(btn: BtnLogin, title: "Login", tint: UIColor(named: "DarkGreen")!)
         
         //Loading view
-        setLoader(loader: Loader, view: view)
+        setLoader(loader: Loader, color: UIColor(named: "DarkGreen")!, view: view)
         
         //hide keyboard
         hideKeyboardOnTap(view: view)
     }
     
-    func setLoader(loader: UIActivityIndicatorView, view: UIView){
+    func setLoader(loader: UIActivityIndicatorView, color: UIColor, view: UIView){
         loader.frame = view.bounds
         loader.backgroundColor = UIColor(named: "Opacity5")
         loader.style = .large
         loader.isHidden = true
+        loader.color = color
         view.addSubview(loader)
         view.bringSubviewToFront(loader)
     }
@@ -165,12 +166,12 @@ class ViewController: UIViewController {
     func validation() -> (success: Bool, title: String, message: String){
         var result = (success: false, title: "ERROR", message: "")
         
-        guard let login = InputLogin.text, login != "" else{
+        guard let login = InputLogin.text, !login.isEmpty else{
             result.message = "Le champ login n'est pas rempli."
             return result
         }
         
-        guard let password = Inputpassword.text, password != "" else{
+        guard let password = Inputpassword.text, !password.isEmpty else{
             result.message = "Le champ mot de passe n'a pas été rempli."
             return result
         }
