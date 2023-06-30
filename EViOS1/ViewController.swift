@@ -166,48 +166,53 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func actionBtnLogin(_ sender: UIButton) {
-        stopEdit(view: view)
-        var success = false
-        var title = "ERROR"
-        var message = ""
+    func validation() -> (success: Bool, title: String, message: String){
+        var result = (success: false, title: "ERROR", message: "")
         
-        if let login = InputLogin.text{
-            if (login != ""){
-                if(login.contains("@")){
-                    if let password = Inputpassword.text{
-                        if (password != ""){
-                            if (password.count >= 4){
-                                success = true
-                                title = "Bienvenue \(login)"
-                                if (SwitchNewsLetter.isOn){
-                                    message = "Vous vous êtes inscrit à la newsletter."
-                                }else{
-                                    message = "Vous ne vous êtes pas inscrit à la newsletter."
-                                }
-                            }else{
-                                message = "Le mot de passe doit contenir au moins 4 lettres."
-                            }
-                        }else{
-                           message = "Le champ mot de passe n'a pas été rempli."
-                        }
-                    }
-                }else{
-                    message = "Votre login ne contient pas de @."
-                }
-            }else{
-                message = "Le champ login n'est pas rempli."
-            }
+        guard let login = InputLogin.text, login != "" else{
+            result.message = "Le champ login n'est pas rempli."
+            return result
         }
         
-        if (success){
+        guard let password = Inputpassword.text, password != "" else{
+            result.message = "Le champ mot de passe n'a pas été rempli."
+            return result
+        }
+        
+        guard login.contains("@") else{
+            result.message = "Votre login ne contient pas de @."
+            return result
+        }
+        
+        guard password.count >= 4 else{
+            result.message = "Le mot de passe doit contenir au moins 4 lettres"
+            return result
+        }
+        
+        if (SwitchNewsLetter.isOn){
+            result.message = "Vous vous êtes inscrit à la newsletter."
+        }else{
+            result.message = "Vous ne vous êtes pas inscrit à la newsletter."
+        }
+        
+        result.success = true
+        result.title = "Bienvenue \(login)"
+        
+        return result
+    }
+    
+    @IBAction func actionBtnLogin(_ sender: UIButton) {
+        stopEdit(view: view)
+        let connected = validation()
+        
+        if (connected.success){
             toggleLoader(loader: Loader)
             logging{
                 DispatchQueue.main.async {
                     self.toggleLoader(loader: self.Loader)
                     self.alertDial(
-                        title: title,
-                        message: message,
+                        title: connected.title,
+                        message: connected.message,
                         cancel: "Cancel",
                         ok: "OK",
                         vc: self
@@ -216,8 +221,8 @@ class ViewController: UIViewController {
             }
         }else{
             alertDial(
-                title: title,
-                message: message,
+                title: connected.title,
+                message: connected.message,
                 cancel: "Cancel",
                 ok: "OK",
                 vc: self
