@@ -16,8 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var LabelNewsLetter: UILabel!
     @IBOutlet weak var SwitchNewsLetter: UISwitch!
     @IBOutlet weak var BtnLogin: UIButton!
-    @IBOutlet weak var LoadingIndicator: UIActivityIndicatorView!
-    
+    var Loader = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +40,28 @@ class ViewController: UIViewController {
         configureBtn(btn: BtnLogin, title: "Login", tint: UIColor(named: "DarkGreen")!)
         
         //Loading view
-        LoadingIndicator.isHidden = true
+        setLoader(loader: Loader, view: view)
         
         //hide keyboard
         hideKeyboardOnTap(view: view)
+    }
+    
+    func setLoader(loader: UIActivityIndicatorView, view: UIView){
+        loader.frame = view.bounds
+        loader.backgroundColor = UIColor(named: "Opacity5")
+        loader.style = .large
+        loader.isHidden = true
+        view.addSubview(loader)
+        view.bringSubviewToFront(loader)
+    }
+    
+    func toggleLoader(loader: UIActivityIndicatorView){
+        loader.isHidden = !loader.isHidden
+        if(loader.isHidden){
+            loader.stopAnimating()
+        }else{
+            loader.startAnimating()
+        }
     }
 
     func setBgImg(img: UIImage, view: UIView){
@@ -184,12 +201,10 @@ class ViewController: UIViewController {
         }
         
         if (success){
-            LoadingIndicator.isHidden = false
-            LoadingIndicator.startAnimating()
+            toggleLoader(loader: Loader)
             logging{
                 DispatchQueue.main.async {
-                    self.LoadingIndicator.isHidden = true
-                    self.LoadingIndicator.stopAnimating()
+                    self.toggleLoader(loader: self.Loader)
                     self.alertDial(
                         title: title,
                         message: message,

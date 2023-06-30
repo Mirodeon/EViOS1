@@ -62,12 +62,6 @@
                                     <action selector="actionBtnLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FsF-MV-vrD"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="exH-M6-7cT">
-                                <rect key="frame" x="137.66666666666666" y="367" width="117.66666666666666" height="118"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="exH-M6-7cT" secondAttribute="height" id="B9f-5U-HBm"/>
-                                </constraints>
-                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -76,10 +70,8 @@
                             <constraint firstItem="enL-ez-Xlg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4fs-DF-tPo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BFh-Hz-N3W" secondAttribute="trailing" constant="24" id="4qI-Z9-5cF"/>
                             <constraint firstItem="4Z5-M2-fRP" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.4" id="5I3-Ag-C0G"/>
-                            <constraint firstItem="exH-M6-7cT" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="7nb-h5-Y1g"/>
                             <constraint firstItem="enL-ez-Xlg" firstAttribute="top" secondItem="dD3-6Y-wSr" secondAttribute="bottom" constant="18" id="82M-2p-CRE"/>
                             <constraint firstItem="whB-Qw-UNK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="CXW-1r-KAh"/>
-                            <constraint firstItem="exH-M6-7cT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Cmb-BL-JCN"/>
                             <constraint firstItem="kxn-gy-OpA" firstAttribute="top" secondItem="BFh-Hz-N3W" secondAttribute="bottom" constant="12" id="ECd-h3-8gf"/>
                             <constraint firstItem="whB-Qw-UNK" firstAttribute="top" secondItem="4Z5-M2-fRP" secondAttribute="bottom" constant="24" id="FaJ-KX-5Nw"/>
                             <constraint firstItem="Py1-1D-UNW" firstAttribute="top" secondItem="enL-ez-Xlg" secondAttribute="bottom" constant="12" id="Fs8-S6-raK"/>
@@ -91,7 +83,6 @@
                             <constraint firstItem="kxn-gy-OpA" firstAttribute="width" secondItem="BFh-Hz-N3W" secondAttribute="width" multiplier="0.1" id="VUz-1g-51P"/>
                             <constraint firstItem="mQc-r5-1E7" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="fV8-cI-iCf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="whB-Qw-UNK" secondAttribute="trailing" constant="24" id="hB2-S7-YDP"/>
-                            <constraint firstItem="exH-M6-7cT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="m4K-dp-3hq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kxn-gy-OpA" secondAttribute="trailing" constant="24" id="ofw-8C-n6a"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mQc-r5-1E7" secondAttribute="bottom" constant="56" id="shc-iL-sUB"/>
                             <constraint firstItem="mQc-r5-1E7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="u6R-uY-ekF"/>
@@ -107,7 +98,6 @@
                         <outlet property="Inputpassword" destination="dD3-6Y-wSr" id="hWW-W7-udr"/>
                         <outlet property="LabelForm" destination="whB-Qw-UNK" id="e5n-IW-6Gk"/>
                         <outlet property="LabelNewsLetter" destination="enL-ez-Xlg" id="mOa-Q8-oyK"/>
-                        <outlet property="LoadingIndicator" destination="exH-M6-7cT" id="pr5-lj-NC5"/>
                         <outlet property="SwitchNewsLetter" destination="Py1-1D-UNW" id="1fT-qO-adI"/>
                     </connections>
                 </viewController>
