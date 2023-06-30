@@ -52,6 +52,7 @@ class ViewController: UIViewController {
         loader.style = .large
         loader.isHidden = true
         loader.color = color
+        loader.center = view.center
         view.addSubview(loader)
         view.bringSubviewToFront(loader)
     }
