@@ -197,16 +197,16 @@ class ViewController: UIViewController {
     
     @IBAction func actionBtnLogin(_ sender: UIButton) {
         stopEdit(view: view)
-        let connected = validation()
+        let validate = validation()
         
-        if (connected.success){
+        if (validate.success){
             toggleLoader(loader: Loader)
             logging{
                 DispatchQueue.main.async {
                     self.toggleLoader(loader: self.Loader)
                     self.alertDial(
-                        title: connected.title,
-                        message: connected.message,
+                        title: validate.title,
+                        message: validate.message,
                         cancel: "Cancel",
                         ok: "OK",
                         vc: self
@@ -215,8 +215,8 @@ class ViewController: UIViewController {
             }
         }else{
             alertDial(
-                title: connected.title,
-                message: connected.message,
+                title: validate.title,
+                message: validate.message,
                 cancel: "Cancel",
                 ok: "OK",
                 vc: self
