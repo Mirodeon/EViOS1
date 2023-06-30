@@ -56,7 +56,7 @@ class ViewController: UIViewController {
     }
     
     func toggleLoader(loader: UIActivityIndicatorView){
-        loader.isHidden = !loader.isHidden
+        loader.isHidden.toggle()
         if(loader.isHidden){
             loader.stopAnimating()
         }else{
@@ -112,15 +112,11 @@ class ViewController: UIViewController {
     }
     
     @objc func toggleVisibility(sender: UITapGestureRecognizer) {
-        var img: String{
-            if(Inputpassword.isSecureTextEntry){
-                return "eye_on_icon"
-            }else{
-                return "eye_off_icon"
-            }
-        }
-        setImgVisibility(img: UIImage(named: img)!, view: ImgVisibility)
-        Inputpassword.isSecureTextEntry = !Inputpassword.isSecureTextEntry
+        setImgVisibility(
+            img: UIImage(named: Inputpassword.isSecureTextEntry ? "eye_on_icon" : "eye_off_icon")!,
+            view: ImgVisibility
+        )
+        Inputpassword.isSecureTextEntry.toggle()
     }
     
     func addToggleVisibility(){
@@ -189,11 +185,9 @@ class ViewController: UIViewController {
             return result
         }
         
-        if (SwitchNewsLetter.isOn){
-            result.message = "Vous vous êtes inscrit à la newsletter."
-        }else{
-            result.message = "Vous ne vous êtes pas inscrit à la newsletter."
-        }
+        result.message = SwitchNewsLetter.isOn
+        ? "Vous vous êtes inscrit à la newsletter."
+        : "Vous ne vous êtes pas inscrit à la newsletter."
         
         result.success = true
         result.title = "Bienvenue \(login)"
